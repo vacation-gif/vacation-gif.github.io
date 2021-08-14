@@ -6,22 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>markdown语法 | Hexo</title>
+  <title>lambda表达式 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="标题： 一级标题二级标题字体：斜体文本斜体文本粗体文本粗体文本粗斜体文本粗斜体文本 无序列表：  第一项 第二项 第三项   第一项 第二项 第三项   第一项 第二项 第三项  列表嵌套：  第一项： 第一项嵌套的第一个元素 第一项嵌套的第二个元素   第二项： 第二项嵌套的第一个元素 第二项嵌套的第二个元素    区块：  最外层  第一层嵌套  第二层嵌套    插入代码：printf()">
+  <meta name="description" content="lambda表达式lambda表达式语法:(String firest,String second)-&gt;{first.length()-second.length()}参数为一个时可省略小括号，操作只有一句时可省略大括号编译器具有推导功能，如:Comparator comp &#x3D; (first,second)-&gt;first.length()-second.length();    &#x2F;&#x2F;此">
 <meta property="og:type" content="article">
-<meta property="og:title" content="markdown语法">
-<meta property="og:url" content="http://example.com/2021/08/07/markdown%E8%AF%AD%E6%B3%95/index.html">
+<meta property="og:title" content="lambda表达式">
+<meta property="og:url" content="http://example.com/2021/08/14/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="标题： 一级标题二级标题字体：斜体文本斜体文本粗体文本粗体文本粗斜体文本粗斜体文本 无序列表：  第一项 第二项 第三项   第一项 第二项 第三项   第一项 第二项 第三项  列表嵌套：  第一项： 第一项嵌套的第一个元素 第一项嵌套的第二个元素   第二项： 第二项嵌套的第一个元素 第二项嵌套的第二个元素    区块：  最外层  第一层嵌套  第二层嵌套    插入代码：printf()">
+<meta property="og:description" content="lambda表达式lambda表达式语法:(String firest,String second)-&gt;{first.length()-second.length()}参数为一个时可省略小括号，操作只有一句时可省略大括号编译器具有推导功能，如:Comparator comp &#x3D; (first,second)-&gt;first.length()-second.length();    &#x2F;&#x2F;此">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2021/08/07/markdown%E8%AF%AD%E6%B3%95/%E5%9B%BE%E7%89%87%E5%9C%B0%E5%9D%80">
-<meta property="og:image" content="http://example.com/2021/08/07/markdown%E8%AF%AD%E6%B3%95/%E5%9B%BE%E7%89%87%E5%9C%B0%E5%9D%80">
-<meta property="article:published_time" content="2021-08-07T07:52:57.979Z">
-<meta property="article:modified_time" content="2021-08-07T11:53:11.344Z">
+<meta property="article:published_time" content="2021-08-14T08:42:59.239Z">
+<meta property="article:modified_time" content="2021-08-14T09:01:52.424Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2021/08/07/markdown%E8%AF%AD%E6%B3%95/%E5%9B%BE%E7%89%87%E5%9C%B0%E5%9D%80">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -157,90 +154,29 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-markdown语法" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-lambda表达式" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      markdown语法
+      lambda表达式
     </h1>
   
 
         
-        <a href="/2021/08/07/markdown%E8%AF%AD%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2021-08-07T07:52:57.979Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-07</time>
+        <a href="/2021/08/14/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="archive-article-date">
+  	<time datetime="2021-08-14T08:42:59.239Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-14</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>标题：</p>
-<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><p>字体：<br><em>斜体文本</em><br><em>斜体文本</em><br><strong>粗体文本</strong><br><strong>粗体文本</strong><br><em><strong>粗斜体文本</strong></em><br><em><strong>粗斜体文本</strong></em></p>
-<p>无序列表：</p>
-<ul>
-<li>第一项</li>
-<li>第二项</li>
-<li>第三项</li>
-</ul>
-<ul>
-<li>第一项</li>
-<li>第二项</li>
-<li>第三项</li>
-</ul>
-<ul>
-<li>第一项</li>
-<li>第二项</li>
-<li>第三项</li>
-</ul>
-<p>列表嵌套：</p>
-<ol>
-<li>第一项：<ul>
-<li>第一项嵌套的第一个元素</li>
-<li>第一项嵌套的第二个元素</li>
-</ul>
-</li>
-<li>第二项：<ul>
-<li>第二项嵌套的第一个元素</li>
-<li>第二项嵌套的第二个元素</li>
-</ul>
-</li>
-</ol>
-<p>区块：</p>
-<blockquote>
-<p>最外层</p>
-<blockquote>
-<p>第一层嵌套</p>
-<blockquote>
-<p>第二层嵌套</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>插入代码：<br><code>printf()</code> 函数</p>
-<p>链接：<br><a href="www.baidu.com">www.baidu.com</a><br>或者<br>&lt;<a target="_blank" rel="noopener" href="http://www.baidu.com&gt;/">www.baidu.com&gt;</a></p>
-<p>图片：<br><img src="%E5%9B%BE%E7%89%87%E5%9C%B0%E5%9D%80" alt="图片替代文字"><br><img src="%E5%9B%BE%E7%89%87%E5%9C%B0%E5%9D%80" alt="图片替代文字" title="可选标题"></p>
-<p>表格：<br>|  表头   |  表头 |<br>|  —-  |  —- |<br>| 单元格  | 单元格 |<br>| 单元格  | 单元格 |</p>
-<table>
-<thead>
-<tr>
-<th align="left">左对齐</th>
-<th align="right">右对齐</th>
-<th align="center">居中对齐</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">单元格</td>
-<td align="right">单元格</td>
-<td align="center">单元格</td>
-</tr>
-<tr>
-<td align="left">单元格</td>
-<td align="right">单元格</td>
-<td align="center">单元格</td>
-</tr>
-</tbody></table>
+        <h4 id="lambda表达式"><a href="#lambda表达式" class="headerlink" title="lambda表达式"></a>lambda表达式</h4><p>lambda表达式语法:<br>(String firest,String second)-&gt;{first.length()-second.length()}<br>参数为一个时可省略小括号，操作只有一句时可省略大括号<br>编译器具有推导功能，如:<br>Comparator<String> comp = (first,second)-&gt;first.length()-second.length();    //此处编译器能推导出first和second为String类型</p>
+<h4 id="函数式接口"><a href="#函数式接口" class="headerlink" title="函数式接口"></a>函数式接口</h4><p>函数式接口语法:<br>对于只有一个抽象方法的接口，需要使用这种接口的对象时，就可以提供一个lambda表达式，这种表达式称为函数式接口。<br>Object::instanceMethod<br>Class::instanceMethod<br>Class::staticMethod<br>第一种情况下，方法引用等价于向方法传递参数的lambda表达式。对于System.out::println，对象是System.out，所以方法表达式等价于x-&gt;System.out.println(x)<br>第二种情况下，第一个参数会成为方法的隐式参数。例如，String::compareToIgnoreCase等同于(x,y)-&gt;x.compareToIgnoreCase(y)<br>第三种情况下，所有参数都传递到静态方法: Math::pow等价于(x,y)-&gt;Math.pow(x,y)</p>
+<h4 id="lambda表达式的变量作用域"><a href="#lambda表达式的变量作用域" class="headerlink" title="lambda表达式的变量作用域"></a>lambda表达式的变量作用域</h4><p>在lambda表达式中，可以调用外围方法或类中的变量，因为lambda表达式会创建对应的自由变量，但是lambda表达式只能引用外围方法中值不会改变的变量</p>
 
       
 
@@ -320,7 +256,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/08/07/markdown%E8%AF%AD%E6%B3%95/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/08/14/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -334,18 +270,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/08/14/%E5%AF%B9%E8%B1%A1%E5%85%8B%E9%9A%86/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/08/14/%E4%BB%A3%E7%90%86/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          对象克隆
+          代理
         
       </div>
     </a>
   
   
-    <a href="/2021/08/07/Comparator%E6%AF%94%E8%BE%83%E5%99%A8/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Comparator比较器的使用</div>
+    <a href="/2021/08/14/%E5%AF%B9%E8%B1%A1%E5%85%8B%E9%9A%86/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">对象克隆</div>
       <i class="icon-circle-right"></i>
     </a>
   

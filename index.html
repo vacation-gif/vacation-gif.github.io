@@ -152,6 +152,200 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-代理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/08/14/%E4%BB%A3%E7%90%86/">代理</a>
+    </h1>
+  
+
+        
+        <a href="/2021/08/14/%E4%BB%A3%E7%90%86/" class="archive-article-date">
+  	<time datetime="2021-08-14T09:33:16.876Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="何时使用代理"><a href="#何时使用代理" class="headerlink" title="何时使用代理"></a>何时使用代理</h4><p>当编译时存在不确定行为时，就可使用代理<br>一般使用代理的目的如：<br>将方法调用路由到远程服务器<br>在运行的程序中将用户界面事件与动作关联起来<br>为了调试，跟踪方法的调用  </p>
+<h4 id="创建代理对象"><a href="#创建代理对象" class="headerlink" title="创建代理对象"></a>创建代理对象</h4><p>调用Proxy类的newProxyInstance方法<br>这个方法有三个参数，类加载器。Class对象数组，每个元素对应需要实现的各个接口。调用处理器。  </p>
+<h4 id="创建处理器对象"><a href="#创建处理器对象" class="headerlink" title="创建处理器对象"></a>创建处理器对象</h4><p>实现InvocationHandler接口，在<code>public Object invoke(Object proxy, Method m, Object[] args)</code>中实现代理方法。</p>
+<h4 id="自己的理解"><a href="#自己的理解" class="headerlink" title="自己的理解"></a>自己的理解</h4><p>其实代理就是使用的反射，在调用原方法之前，插入其他的操作，此处和spring框架的aop原理相同</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/08/14/%E4%BB%A3%E7%90%86/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-lambda表达式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/08/14/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/">lambda表达式</a>
+    </h1>
+  
+
+        
+        <a href="/2021/08/14/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="archive-article-date">
+  	<time datetime="2021-08-14T08:42:59.239Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="lambda表达式"><a href="#lambda表达式" class="headerlink" title="lambda表达式"></a>lambda表达式</h4><p>lambda表达式语法:<br>(String firest,String second)-&gt;{first.length()-second.length()}<br>参数为一个时可省略小括号，操作只有一句时可省略大括号<br>编译器具有推导功能，如:<br>Comparator<String> comp = (first,second)-&gt;first.length()-second.length();    //此处编译器能推导出first和second为String类型</p>
+<h4 id="函数式接口"><a href="#函数式接口" class="headerlink" title="函数式接口"></a>函数式接口</h4><p>函数式接口语法:<br>对于只有一个抽象方法的接口，需要使用这种接口的对象时，就可以提供一个lambda表达式，这种表达式称为函数式接口。<br>Object::instanceMethod<br>Class::instanceMethod<br>Class::staticMethod<br>第一种情况下，方法引用等价于向方法传递参数的lambda表达式。对于System.out::println，对象是System.out，所以方法表达式等价于x-&gt;System.out.println(x)<br>第二种情况下，第一个参数会成为方法的隐式参数。例如，String::compareToIgnoreCase等同于(x,y)-&gt;x.compareToIgnoreCase(y)<br>第三种情况下，所有参数都传递到静态方法: Math::pow等价于(x,y)-&gt;Math.pow(x,y)</p>
+<h4 id="lambda表达式的变量作用域"><a href="#lambda表达式的变量作用域" class="headerlink" title="lambda表达式的变量作用域"></a>lambda表达式的变量作用域</h4><p>在lambda表达式中，可以调用外围方法或类中的变量，因为lambda表达式会创建对应的自由变量，但是lambda表达式只能引用外围方法中值不会改变的变量</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/08/14/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-对象克隆" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/08/14/%E5%AF%B9%E8%B1%A1%E5%85%8B%E9%9A%86/">对象克隆</a>
+    </h1>
+  
+
+        
+        <a href="/2021/08/14/%E5%AF%B9%E8%B1%A1%E5%85%8B%E9%9A%86/" class="archive-article-date">
+  	<time datetime="2021-08-14T08:35:24.571Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="clone-方法，浅克隆"><a href="#clone-方法，浅克隆" class="headerlink" title="clone()方法，浅克隆"></a>clone()方法，浅克隆</h5><p>现有Employee类中包含字段String name，和double salary和Date hireDate。如果调用object超类中的clone()方法，只会克隆基础类型，而name字段和hireDate字段不会克隆<br>#####深克隆<br>重写Employee类的clone方法如下：<br>public Employee clone() throws CloneNotSupportedException{<br>    Employee cloned = (Employee) super.clone();<br>    cloned.hireDay = (Date) this.hireDay.clone();<br>    return cloned;<br>}</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/08/14/%E5%AF%B9%E8%B1%A1%E5%85%8B%E9%9A%86/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-markdown语法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     

@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>鄙人的辣鸡博客</title>
+  <title>myblog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
-<meta property="og:title" content="鄙人的辣鸡博客">
+<meta property="og:title" content="myblog">
 <meta property="og:url" content="http://example.com/index.html">
-<meta property="og:site_name" content="鄙人的辣鸡博客">
+<meta property="og:site_name" content="myblog">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternative" href="/atom.xml" title="鄙人的辣鸡博客" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="myblog" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -151,6 +151,62 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-jvm虚拟机" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h2 id="title-jvm虚拟机"><a href="#title-jvm虚拟机" class="headerlink" title="title:jvm虚拟机"></a>title:jvm虚拟机</h2><p>#虚拟机构成<br>1.类装载子系统<br>2.运行时数据区<br>3.堆<br>4.栈<br>5.本地方法栈<br>6.方法区<br>7.程序计数器</p>
+<p>##堆<br>new出来的对象一般都在堆里面，而别的地方保存的只是地址，指向堆中的某一块区域</p>
+<p>##栈<br>在运行时为每个线程分配一块栈空间，用于保存<br>栈内又有被称为栈帧的，每个方法对应一个栈帧，用于保存方法的变量<br>每个线程栈里面都有一个程序计数器，记录程序运行到了哪一行</p>
+<p>##本地方法栈<br>用c和c++语言实现的方法执行的时候分配的内存空间</p>
+<p>##方法区<br>存放常量，静态变量，类信息</p>
+<p>##程序技术器<br>用于在线程被挂起后继续执行的时候找到执行位置，由字节码执行引擎修改</p>
+<p>#堆内存垃圾回收机制<br>堆可分为三块，前两块区域都为年轻代<br>Eden-&gt;s0,s1-&gt;老年代<br>比例为1/3(8/10)：1/3(2/10)：2/3<br>####minor gc<br>所有刚创建的对象都在Eden区，当Eden区内存满的时候开始垃圾回收<br>GC Roots指线程栈的本地变量，静态变量，本地方法栈的变量等<br>使用可达性算法寻找没有指向的对象，可达性算法以GC Roots对象为起点，向下搜索引用的对象<br>对象进入老年代：<br>1.当对象经过15次gc后还没有被回收或者年轻代空间已满，就进入老年代<br>2.在移动的这批对象大小超过s0区的50%也有可能直接进入老年代<br>####full gc<br>老年代内存满之后还会进行gc，对堆中所有内存区域gc  </p>
+<p>#jvm调优<br>一般指减少gc，最主要的目标指减少full gc<br>STW，stop the world 虚拟机在做垃圾回收的时候会停止所有用户线程<br>STW设计的原因是在gc过程中防止程序的运行对对象的操作</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/08/25/jvm%E8%99%9A%E6%8B%9F%E6%9C%BA/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-代理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">

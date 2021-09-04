@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>jvm虚拟机 | myblog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="#虚拟机构成1.类装载子系统2.运行时数据区3.堆4.栈5.本地方法栈6.方法区7.程序计数器 ##堆new出来的对象一般都在堆里面，而别的地方保存的只是地址，指向堆中的某一块区域 ##栈在运行时为每个线程分配一块栈空间，用于保存栈内又有被称为栈帧的，每个方法对应一个栈帧，用于保存方法的变量每个线程栈里面都有一个程序计数器，记录程序运行到了哪一行 ##本地方法栈用c和c++语言实现的方法执行的时候">
+  <meta name="description" content="虚拟机构成1.类装载子系统2.运行时数据区3.堆4.栈5.本地方法栈6.方法区7.程序计数器 堆new出来的对象一般都在堆里面，而别的地方保存的只是地址，指向堆中的某一块区域 栈在运行时为每个线程分配一块栈空间，用于保存栈内又有被称为栈帧的，每个方法对应一个栈帧，用于保存方法的变量每个线程栈里面都有一个程序计数器，记录程序运行到了哪一行 本地方法栈用c和c++语言实现的方法执行的时候分配的内存空间">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jvm虚拟机">
 <meta property="og:url" content="http://example.com/2021/08/25/jvm%E8%99%9A%E6%8B%9F%E6%9C%BA/index.html">
 <meta property="og:site_name" content="myblog">
-<meta property="og:description" content="#虚拟机构成1.类装载子系统2.运行时数据区3.堆4.栈5.本地方法栈6.方法区7.程序计数器 ##堆new出来的对象一般都在堆里面，而别的地方保存的只是地址，指向堆中的某一块区域 ##栈在运行时为每个线程分配一块栈空间，用于保存栈内又有被称为栈帧的，每个方法对应一个栈帧，用于保存方法的变量每个线程栈里面都有一个程序计数器，记录程序运行到了哪一行 ##本地方法栈用c和c++语言实现的方法执行的时候">
+<meta property="og:description" content="虚拟机构成1.类装载子系统2.运行时数据区3.堆4.栈5.本地方法栈6.方法区7.程序计数器 堆new出来的对象一般都在堆里面，而别的地方保存的只是地址，指向堆中的某一块区域 栈在运行时为每个线程分配一块栈空间，用于保存栈内又有被称为栈帧的，每个方法对应一个栈帧，用于保存方法的变量每个线程栈里面都有一个程序计数器，记录程序运行到了哪一行 本地方法栈用c和c++语言实现的方法执行的时候分配的内存空间">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-08-25T06:17:24.455Z">
-<meta property="article:modified_time" content="2021-09-04T06:08:42.458Z">
+<meta property="article:modified_time" content="2021-09-04T06:10:48.923Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -174,14 +174,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#虚拟机构成<br>1.类装载子系统<br>2.运行时数据区<br>3.堆<br>4.栈<br>5.本地方法栈<br>6.方法区<br>7.程序计数器</p>
-<p>##堆<br>new出来的对象一般都在堆里面，而别的地方保存的只是地址，指向堆中的某一块区域</p>
-<p>##栈<br>在运行时为每个线程分配一块栈空间，用于保存<br>栈内又有被称为栈帧的，每个方法对应一个栈帧，用于保存方法的变量<br>每个线程栈里面都有一个程序计数器，记录程序运行到了哪一行</p>
-<p>##本地方法栈<br>用c和c++语言实现的方法执行的时候分配的内存空间</p>
-<p>##方法区<br>存放常量，静态变量，类信息</p>
-<p>##程序技术器<br>用于在线程被挂起后继续执行的时候找到执行位置，由字节码执行引擎修改</p>
-<p>#堆内存垃圾回收机制<br>堆可分为三块，前两块区域都为年轻代<br>Eden-&gt;s0,s1-&gt;老年代<br>比例为1/3(8/10)：1/3(2/10)：2/3<br>####minor gc<br>所有刚创建的对象都在Eden区，当Eden区内存满的时候开始垃圾回收<br>GC Roots指线程栈的本地变量，静态变量，本地方法栈的变量等<br>使用可达性算法寻找没有指向的对象，可达性算法以GC Roots对象为起点，向下搜索引用的对象<br>对象进入老年代：<br>1.当对象经过15次gc后还没有被回收或者年轻代空间已满，就进入老年代<br>2.在移动的这批对象大小超过s0区的50%也有可能直接进入老年代<br>####full gc<br>老年代内存满之后还会进行gc，对堆中所有内存区域gc  </p>
-<p>#jvm调优<br>一般指减少gc，最主要的目标指减少full gc<br>STW，stop the world 虚拟机在做垃圾回收的时候会停止所有用户线程<br>STW设计的原因是在gc过程中防止程序的运行对对象的操作</p>
+        <h1 id="虚拟机构成"><a href="#虚拟机构成" class="headerlink" title="虚拟机构成"></a>虚拟机构成</h1><p>1.类装载子系统<br>2.运行时数据区<br>3.堆<br>4.栈<br>5.本地方法栈<br>6.方法区<br>7.程序计数器</p>
+<h2 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h2><p>new出来的对象一般都在堆里面，而别的地方保存的只是地址，指向堆中的某一块区域</p>
+<h2 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h2><p>在运行时为每个线程分配一块栈空间，用于保存<br>栈内又有被称为栈帧的，每个方法对应一个栈帧，用于保存方法的变量<br>每个线程栈里面都有一个程序计数器，记录程序运行到了哪一行</p>
+<h2 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a>本地方法栈</h2><p>用c和c++语言实现的方法执行的时候分配的内存空间</p>
+<h2 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h2><p>存放常量，静态变量，类信息</p>
+<h2 id="程序技术器"><a href="#程序技术器" class="headerlink" title="程序技术器"></a>程序技术器</h2><p>用于在线程被挂起后继续执行的时候找到执行位置，由字节码执行引擎修改</p>
+<h1 id="堆内存垃圾回收机制"><a href="#堆内存垃圾回收机制" class="headerlink" title="堆内存垃圾回收机制"></a>堆内存垃圾回收机制</h1><p>堆可分为三块，前两块区域都为年轻代<br>Eden-&gt;s0,s1-&gt;老年代<br>比例为1/3(8/10)：1/3(2/10)：2/3</p>
+<h4 id="minor-gc"><a href="#minor-gc" class="headerlink" title="minor gc"></a>minor gc</h4><p>所有刚创建的对象都在Eden区，当Eden区内存满的时候开始垃圾回收<br>GC Roots指线程栈的本地变量，静态变量，本地方法栈的变量等<br>使用可达性算法寻找没有指向的对象，可达性算法以GC Roots对象为起点，向下搜索引用的对象<br>对象进入老年代：<br>1.当对象经过15次gc后还没有被回收或者年轻代空间已满，就进入老年代<br>2.在移动的这批对象大小超过s0区的50%也有可能直接进入老年代  </p>
+<h4 id="full-gc"><a href="#full-gc" class="headerlink" title="full gc"></a>full gc</h4><p>老年代内存满之后还会进行gc，对堆中所有内存区域gc  </p>
+<h1 id="jvm调优"><a href="#jvm调优" class="headerlink" title="jvm调优"></a>jvm调优</h1><p>一般指减少gc，最主要的目标指减少full gc<br>STW，stop the world 虚拟机在做垃圾回收的时候会停止所有用户线程<br>STW设计的原因是在gc过程中防止程序的运行对对象的操作</p>
 
       
 

@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>对象克隆 | myblog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="clone()方法，浅克隆现有Employee类中包含字段String name，和double salary和Date hireDate。如果调用object超类中的clone()方法，只会克隆基础类型，而name字段和hireDate字段不会克隆#####深克隆重写Employee类的clone方法如下：public Employee clone() throws CloneNotSuppor">
+  <meta name="description" content="clone()方法，浅克隆现有Employee类中包含字段String name，和double salary和Date hireDate。如果调用object超类中的clone()方法，只会克隆基础类型，而name字段和hireDate字段不会克隆 深克隆重写Employee类的clone方法如下：public Employee clone() throws CloneNotSupportedE">
 <meta property="og:type" content="article">
 <meta property="og:title" content="对象克隆">
 <meta property="og:url" content="http://example.com/2021/08/14/%E5%AF%B9%E8%B1%A1%E5%85%8B%E9%9A%86/index.html">
 <meta property="og:site_name" content="myblog">
-<meta property="og:description" content="clone()方法，浅克隆现有Employee类中包含字段String name，和double salary和Date hireDate。如果调用object超类中的clone()方法，只会克隆基础类型，而name字段和hireDate字段不会克隆#####深克隆重写Employee类的clone方法如下：public Employee clone() throws CloneNotSuppor">
+<meta property="og:description" content="clone()方法，浅克隆现有Employee类中包含字段String name，和double salary和Date hireDate。如果调用object超类中的clone()方法，只会克隆基础类型，而name字段和hireDate字段不会克隆 深克隆重写Employee类的clone方法如下：public Employee clone() throws CloneNotSupportedE">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-08-14T08:35:24.571Z">
-<meta property="article:modified_time" content="2021-08-14T08:42:45.135Z">
+<meta property="article:modified_time" content="2021-09-04T06:10:19.056Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -174,7 +174,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h5 id="clone-方法，浅克隆"><a href="#clone-方法，浅克隆" class="headerlink" title="clone()方法，浅克隆"></a>clone()方法，浅克隆</h5><p>现有Employee类中包含字段String name，和double salary和Date hireDate。如果调用object超类中的clone()方法，只会克隆基础类型，而name字段和hireDate字段不会克隆<br>#####深克隆<br>重写Employee类的clone方法如下：<br>public Employee clone() throws CloneNotSupportedException{<br>    Employee cloned = (Employee) super.clone();<br>    cloned.hireDay = (Date) this.hireDay.clone();<br>    return cloned;<br>}</p>
+        <h5 id="clone-方法，浅克隆"><a href="#clone-方法，浅克隆" class="headerlink" title="clone()方法，浅克隆"></a>clone()方法，浅克隆</h5><p>现有Employee类中包含字段String name，和double salary和Date hireDate。如果调用object超类中的clone()方法，只会克隆基础类型，而name字段和hireDate字段不会克隆</p>
+<h5 id="深克隆"><a href="#深克隆" class="headerlink" title="深克隆"></a>深克隆</h5><p>重写Employee类的clone方法如下：<br>public Employee clone() throws CloneNotSupportedException{<br>    Employee cloned = (Employee) super.clone();<br>    cloned.hireDay = (Date) this.hireDay.clone();<br>    return cloned;<br>}</p>
 
       
 

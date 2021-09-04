@@ -172,7 +172,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>###范式<br>第一范式(确保每列保持原子性)<br>第二范式(确保表中的每列都和主键相关)<br>第三范式(确保每列都和主键列直接相关,而不是间接相关)<br>###事务四大特性（ACID）原子性、一致性、隔离性、持久性？<br>原子性（Atomicity）</p>
+        <h3 id="范式"><a href="#范式" class="headerlink" title="范式"></a>范式</h3><p>第一范式(确保每列保持原子性)<br>第二范式(确保表中的每列都和主键相关)<br>第三范式(确保每列都和主键列直接相关,而不是间接相关)</p>
+<h3 id="事务四大特性（ACID）原子性、一致性、隔离性、持久性？"><a href="#事务四大特性（ACID）原子性、一致性、隔离性、持久性？" class="headerlink" title="事务四大特性（ACID）原子性、一致性、隔离性、持久性？"></a>事务四大特性（ACID）原子性、一致性、隔离性、持久性？</h3><p>原子性（Atomicity）</p>
 <p>原子性是指事务包含的所有操作要么全部成功，要么全部失败回滚，因此事务的操作如果成功就必须要完全应用到数据库，如果操作失败则不能对数据库有任何影响。</p>
 <p>一致性（Consistency）</p>
 <p>事务开始前和结束后，数据库的完整性约束没有被破坏。比如A向B转账，不可能A扣了钱，B却没收到。<br>隔离性（Isolation）</p>
@@ -180,10 +181,43 @@
 <p>关于事务的隔离性数据库提供了多种隔离级别，稍后会介绍到。 </p>
 <p>持久性（Durability）</p>
 <p>持久性是指一个事务一旦被提交了，那么对数据库中的数据的改变就是永久性的，即便是在数据库系统遇到故障的情况下也不会丢失提交事务的操作。</p>
-<p>##事务的并发问题<br>（1）脏读：事务A读取了事务B更新的数据，然后B回滚操作，那么A读取到的数据是脏数据</p>
+<h2 id="事务的并发问题"><a href="#事务的并发问题" class="headerlink" title="事务的并发问题"></a>事务的并发问题</h2><p>（1）脏读：事务A读取了事务B更新的数据，然后B回滚操作，那么A读取到的数据是脏数据</p>
 <p>（2）不可重复读：事务 A 多次读取同一数据，事务 B 在事务A多次读取的过程中，对数据作了更新并提交，导致事务A多次读取同一数据时，结果因此本事务先后两次读到的数据结果会不一致。</p>
 <p>（3）幻读：幻读解决了不重复读，保证了同一个事务里，查询的结果都是事务开始时的状态（一致性）。</p>
-<p>##事务隔离级别<br>事务隔离级别| 脏读| 不可重复读| 幻读|<br>—|—|—|—|<br>读未提交 read-uncommitted| 是| 是| 是|<br>不可重复读 read-committed| 否| 是| 是|<br>可重复读 repeatable-read| 否| 否| 是|<br>串行化 serializable| 否| 否| 否|</p>
+<h2 id="事务隔离级别"><a href="#事务隔离级别" class="headerlink" title="事务隔离级别"></a>事务隔离级别</h2><table>
+<thead>
+<tr>
+<th>事务隔离级别</th>
+<th>脏读</th>
+<th>不可重复读</th>
+<th>幻读</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>读未提交 read-uncommitted</td>
+<td>是</td>
+<td>是</td>
+<td>是</td>
+</tr>
+<tr>
+<td>不可重复读 read-committed</td>
+<td>否</td>
+<td>是</td>
+<td>是</td>
+</tr>
+<tr>
+<td>可重复读 repeatable-read</td>
+<td>否</td>
+<td>否</td>
+<td>是</td>
+</tr>
+<tr>
+<td>串行化 serializable</td>
+<td>否</td>
+<td>否</td>
+<td>否</td>
+</tr>
+</tbody></table>
 <ul>
 <li>读未提交：另一个事务修改了数据，但尚未提交，而本事务中的SELECT会读到这些未被提交的数据脏读</li>
 <li>不可重复读：事务 A 多次读取同一数据，事务 B 在事务A多次读取的过程中，对数据作了更新并提交，导致事务A多次读取同一数据时，结果因此本事务先后两次读到的数据结果会不一致。</li>
@@ -253,14 +287,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#虚拟机构成<br>1.类装载子系统<br>2.运行时数据区<br>3.堆<br>4.栈<br>5.本地方法栈<br>6.方法区<br>7.程序计数器</p>
-<p>##堆<br>new出来的对象一般都在堆里面，而别的地方保存的只是地址，指向堆中的某一块区域</p>
-<p>##栈<br>在运行时为每个线程分配一块栈空间，用于保存<br>栈内又有被称为栈帧的，每个方法对应一个栈帧，用于保存方法的变量<br>每个线程栈里面都有一个程序计数器，记录程序运行到了哪一行</p>
-<p>##本地方法栈<br>用c和c++语言实现的方法执行的时候分配的内存空间</p>
-<p>##方法区<br>存放常量，静态变量，类信息</p>
-<p>##程序技术器<br>用于在线程被挂起后继续执行的时候找到执行位置，由字节码执行引擎修改</p>
-<p>#堆内存垃圾回收机制<br>堆可分为三块，前两块区域都为年轻代<br>Eden-&gt;s0,s1-&gt;老年代<br>比例为1/3(8/10)：1/3(2/10)：2/3<br>####minor gc<br>所有刚创建的对象都在Eden区，当Eden区内存满的时候开始垃圾回收<br>GC Roots指线程栈的本地变量，静态变量，本地方法栈的变量等<br>使用可达性算法寻找没有指向的对象，可达性算法以GC Roots对象为起点，向下搜索引用的对象<br>对象进入老年代：<br>1.当对象经过15次gc后还没有被回收或者年轻代空间已满，就进入老年代<br>2.在移动的这批对象大小超过s0区的50%也有可能直接进入老年代<br>####full gc<br>老年代内存满之后还会进行gc，对堆中所有内存区域gc  </p>
-<p>#jvm调优<br>一般指减少gc，最主要的目标指减少full gc<br>STW，stop the world 虚拟机在做垃圾回收的时候会停止所有用户线程<br>STW设计的原因是在gc过程中防止程序的运行对对象的操作</p>
+        <h1 id="虚拟机构成"><a href="#虚拟机构成" class="headerlink" title="虚拟机构成"></a>虚拟机构成</h1><p>1.类装载子系统<br>2.运行时数据区<br>3.堆<br>4.栈<br>5.本地方法栈<br>6.方法区<br>7.程序计数器</p>
+<h2 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h2><p>new出来的对象一般都在堆里面，而别的地方保存的只是地址，指向堆中的某一块区域</p>
+<h2 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h2><p>在运行时为每个线程分配一块栈空间，用于保存<br>栈内又有被称为栈帧的，每个方法对应一个栈帧，用于保存方法的变量<br>每个线程栈里面都有一个程序计数器，记录程序运行到了哪一行</p>
+<h2 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a>本地方法栈</h2><p>用c和c++语言实现的方法执行的时候分配的内存空间</p>
+<h2 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h2><p>存放常量，静态变量，类信息</p>
+<h2 id="程序技术器"><a href="#程序技术器" class="headerlink" title="程序技术器"></a>程序技术器</h2><p>用于在线程被挂起后继续执行的时候找到执行位置，由字节码执行引擎修改</p>
+<h1 id="堆内存垃圾回收机制"><a href="#堆内存垃圾回收机制" class="headerlink" title="堆内存垃圾回收机制"></a>堆内存垃圾回收机制</h1><p>堆可分为三块，前两块区域都为年轻代<br>Eden-&gt;s0,s1-&gt;老年代<br>比例为1/3(8/10)：1/3(2/10)：2/3</p>
+<h4 id="minor-gc"><a href="#minor-gc" class="headerlink" title="minor gc"></a>minor gc</h4><p>所有刚创建的对象都在Eden区，当Eden区内存满的时候开始垃圾回收<br>GC Roots指线程栈的本地变量，静态变量，本地方法栈的变量等<br>使用可达性算法寻找没有指向的对象，可达性算法以GC Roots对象为起点，向下搜索引用的对象<br>对象进入老年代：<br>1.当对象经过15次gc后还没有被回收或者年轻代空间已满，就进入老年代<br>2.在移动的这批对象大小超过s0区的50%也有可能直接进入老年代  </p>
+<h4 id="full-gc"><a href="#full-gc" class="headerlink" title="full gc"></a>full gc</h4><p>老年代内存满之后还会进行gc，对堆中所有内存区域gc  </p>
+<h1 id="jvm调优"><a href="#jvm调优" class="headerlink" title="jvm调优"></a>jvm调优</h1><p>一般指减少gc，最主要的目标指减少full gc<br>STW，stop the world 虚拟机在做垃圾回收的时候会停止所有用户线程<br>STW设计的原因是在gc过程中防止程序的运行对对象的操作</p>
 
       
 
@@ -454,7 +490,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h5 id="clone-方法，浅克隆"><a href="#clone-方法，浅克隆" class="headerlink" title="clone()方法，浅克隆"></a>clone()方法，浅克隆</h5><p>现有Employee类中包含字段String name，和double salary和Date hireDate。如果调用object超类中的clone()方法，只会克隆基础类型，而name字段和hireDate字段不会克隆<br>#####深克隆<br>重写Employee类的clone方法如下：<br>public Employee clone() throws CloneNotSupportedException{<br>    Employee cloned = (Employee) super.clone();<br>    cloned.hireDay = (Date) this.hireDay.clone();<br>    return cloned;<br>}</p>
+        <h5 id="clone-方法，浅克隆"><a href="#clone-方法，浅克隆" class="headerlink" title="clone()方法，浅克隆"></a>clone()方法，浅克隆</h5><p>现有Employee类中包含字段String name，和double salary和Date hireDate。如果调用object超类中的clone()方法，只会克隆基础类型，而name字段和hireDate字段不会克隆</p>
+<h5 id="深克隆"><a href="#深克隆" class="headerlink" title="深克隆"></a>深克隆</h5><p>重写Employee类的clone方法如下：<br>public Employee clone() throws CloneNotSupportedException{<br>    Employee cloned = (Employee) super.clone();<br>    cloned.hireDay = (Date) this.hireDay.clone();<br>    return cloned;<br>}</p>
 
       
 

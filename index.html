@@ -155,10 +155,24 @@
     <article id="post-数据库面试" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/09/04/%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9D%A2%E8%AF%95/">数据库面试</a>
+    </h1>
+  
+
+        
+        <a href="/2021/09/04/%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9D%A2%E8%AF%95/" class="archive-article-date">
+  	<time datetime="2021-09-04T05:58:22.638Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-04</time>
+</a>
+        
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <hr>
-<h2 id="title-数据库面试"><a href="#title-数据库面试" class="headerlink" title="title:数据库面试"></a>title:数据库面试</h2><p>###范式<br>第一范式(确保每列保持原子性)<br>第二范式(确保表中的每列都和主键相关)<br>第三范式(确保每列都和主键列直接相关,而不是间接相关)<br>###事务四大特性（ACID）原子性、一致性、隔离性、持久性？<br>原子性（Atomicity）</p>
+        <p>###范式<br>第一范式(确保每列保持原子性)<br>第二范式(确保表中的每列都和主键相关)<br>第三范式(确保每列都和主键列直接相关,而不是间接相关)<br>###事务四大特性（ACID）原子性、一致性、隔离性、持久性？<br>原子性（Atomicity）</p>
 <p>原子性是指事务包含的所有操作要么全部成功，要么全部失败回滚，因此事务的操作如果成功就必须要完全应用到数据库，如果操作失败则不能对数据库有任何影响。</p>
 <p>一致性（Consistency）</p>
 <p>事务开始前和结束后，数据库的完整性约束没有被破坏。比如A向B转账，不可能A扣了钱，B却没收到。<br>隔离性（Isolation）</p>
@@ -222,10 +236,24 @@
     <article id="post-jvm虚拟机" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/08/25/jvm%E8%99%9A%E6%8B%9F%E6%9C%BA/">jvm虚拟机</a>
+    </h1>
+  
+
+        
+        <a href="/2021/08/25/jvm%E8%99%9A%E6%8B%9F%E6%9C%BA/" class="archive-article-date">
+  	<time datetime="2021-08-25T06:17:24.455Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-25</time>
+</a>
+        
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <hr>
-<h2 id="title-jvm虚拟机"><a href="#title-jvm虚拟机" class="headerlink" title="title:jvm虚拟机"></a>title:jvm虚拟机</h2><p>#虚拟机构成<br>1.类装载子系统<br>2.运行时数据区<br>3.堆<br>4.栈<br>5.本地方法栈<br>6.方法区<br>7.程序计数器</p>
+        <p>#虚拟机构成<br>1.类装载子系统<br>2.运行时数据区<br>3.堆<br>4.栈<br>5.本地方法栈<br>6.方法区<br>7.程序计数器</p>
 <p>##堆<br>new出来的对象一般都在堆里面，而别的地方保存的只是地址，指向堆中的某一块区域</p>
 <p>##栈<br>在运行时为每个线程分配一块栈空间，用于保存<br>栈内又有被称为栈帧的，每个方法对应一个栈帧，用于保存方法的变量<br>每个线程栈里面都有一个程序计数器，记录程序运行到了哪一行</p>
 <p>##本地方法栈<br>用c和c++语言实现的方法执行的时候分配的内存空间</p>

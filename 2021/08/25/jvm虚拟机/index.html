@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>jvm虚拟机 | myblog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="虚拟机构成1.类装载子系统2.运行时数据区3.堆4.栈5.本地方法栈6.方法区7.程序计数器 堆new出来的对象一般都在堆里面，而别的地方保存的只是地址，指向堆中的某一块区域 栈在运行时为每个线程分配一块栈空间，用于保存栈内又有被称为栈帧的，每个方法对应一个栈帧，用于保存方法的变量每个线程栈里面都有一个程序计数器，记录程序运行到了哪一行 本地方法栈用c和c++语言实现的方法执行的时候分配的内存空间">
+  <meta name="description" content="HotSpot虚拟机虚拟机构成1.类装载子系统2.运行时数据区3.堆4.栈5.本地方法接口6.方法区7.程序计数器 堆存储单位new出来的对象一般都在堆里面，而别的地方保存的只是地址，指向堆中的某一块区域堆空间大小设置：-Xms用于表示堆区的起始内存，等价于-XX:InitialHeapSize-Xmx则用于表示堆区的最大内存，等价于-XX:MaxHeapSize年轻代和老年代：一类是生命周期较短">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jvm虚拟机">
 <meta property="og:url" content="http://example.com/2021/08/25/jvm%E8%99%9A%E6%8B%9F%E6%9C%BA/index.html">
 <meta property="og:site_name" content="myblog">
-<meta property="og:description" content="虚拟机构成1.类装载子系统2.运行时数据区3.堆4.栈5.本地方法栈6.方法区7.程序计数器 堆new出来的对象一般都在堆里面，而别的地方保存的只是地址，指向堆中的某一块区域 栈在运行时为每个线程分配一块栈空间，用于保存栈内又有被称为栈帧的，每个方法对应一个栈帧，用于保存方法的变量每个线程栈里面都有一个程序计数器，记录程序运行到了哪一行 本地方法栈用c和c++语言实现的方法执行的时候分配的内存空间">
+<meta property="og:description" content="HotSpot虚拟机虚拟机构成1.类装载子系统2.运行时数据区3.堆4.栈5.本地方法接口6.方法区7.程序计数器 堆存储单位new出来的对象一般都在堆里面，而别的地方保存的只是地址，指向堆中的某一块区域堆空间大小设置：-Xms用于表示堆区的起始内存，等价于-XX:InitialHeapSize-Xmx则用于表示堆区的最大内存，等价于-XX:MaxHeapSize年轻代和老年代：一类是生命周期较短">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-08-25T06:17:24.455Z">
-<meta property="article:modified_time" content="2021-09-04T06:10:48.923Z">
+<meta property="article:modified_time" content="2021-09-06T08:54:32.095Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -174,16 +174,68 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="虚拟机构成"><a href="#虚拟机构成" class="headerlink" title="虚拟机构成"></a>虚拟机构成</h1><p>1.类装载子系统<br>2.运行时数据区<br>3.堆<br>4.栈<br>5.本地方法栈<br>6.方法区<br>7.程序计数器</p>
-<h2 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h2><p>new出来的对象一般都在堆里面，而别的地方保存的只是地址，指向堆中的某一块区域</p>
-<h2 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h2><p>在运行时为每个线程分配一块栈空间，用于保存<br>栈内又有被称为栈帧的，每个方法对应一个栈帧，用于保存方法的变量<br>每个线程栈里面都有一个程序计数器，记录程序运行到了哪一行</p>
+        <h1 id="HotSpot虚拟机"><a href="#HotSpot虚拟机" class="headerlink" title="HotSpot虚拟机"></a>HotSpot虚拟机</h1><h2 id="虚拟机构成"><a href="#虚拟机构成" class="headerlink" title="虚拟机构成"></a>虚拟机构成</h2><p>1.类装载子系统<br>2.运行时数据区<br>3.堆<br>4.栈<br>5.本地方法接口<br>6.方法区<br>7.程序计数器</p>
+<h2 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h2><p>存储单位<br>new出来的对象一般都在堆里面，而别的地方保存的只是地址，指向堆中的某一块区域<br>堆空间大小设置：<br>-Xms用于表示堆区的起始内存，等价于-XX:InitialHeapSize<br>-Xmx则用于表示堆区的最大内存，等价于-XX:MaxHeapSize<br>年轻代和老年代：<br>一类是生命周期较短的瞬时对象，这类对象的创建和消亡都非常迅速<br>另外一类对象的生命周期却非常长，在某些极端情况下还能与jvm的生命周期保持一致<br>-XX:NewRatio=2 设置新生代与老年代的比例。默认值为2<br>-XX:SurvivorRatio=8 设置新生代中比例为8:1:1<br>-XX:-UseAdaptiveSizePolicy 关闭自适应的内存分配策略<br>-Xmn: 设置新生代的空间大小<br>体积过大的对象直接进入老年代<br>TLAB:<br>每个线程都会有的年轻代中的私有空间，占用空间非常小</p>
+<h2 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h2><p>运行时单位<br>在运行时为每个线程分配一块栈空间，用于保存<br>栈内又有被称为栈帧的，每个方法对应一个栈帧，用于保存方法的变量<br>每个线程栈里面都有一个程序计数器，记录程序运行到了哪一行</p>
+<blockquote>
+<p>栈帧基本结构：</p>
+<p>局部变量表： </p>
+<blockquote>
+<p>1.定义为一个数字数组，主要用于存储方法参数和定义在方法体内的局部变量，这些数据类型包括基本数据类型、对象引用，以及returnAddress类型<br>2.由于局部变量是建立在线程的栈上，是线程的私有数据，因此不存在数据安全问题<br>3.局部变量表所需的容量大小是在编译器就确定下来的<br>基本单位是槽slot，long和double占两格，别的占一格<br>局部变量表不经过类加载过程，所以局部变量不初始化程序无法通过编译<br>重要的垃圾回收根节点，只要被局部变量表中直接或间接引用的对象都不会被回收  </p>
+</blockquote>
+<p>操作数栈（或表达式栈）  </p>
+<blockquote>
+<p>保存计算机过程的中间结果，同时作为计算过程中变量临时的存储空间  </p>
+</blockquote>
+<p>动态链接（或指向运行时常量池的方法引用）  </p>
+<blockquote>
+<p>其实就是指针，指向方法区的方法  </p>
+</blockquote>
+<p>方法返回地址（或方法正常退出或异常退出的定义）  </p>
+<blockquote>
+<p>方法正常退出，存放调用该方法的pc寄存器的值<br>方法异常退出则不保存信息  </p>
+</blockquote>
+<p>一些附加信息</p>
+<blockquote>
+</blockquote>
+</blockquote>
 <h2 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a>本地方法栈</h2><p>用c和c++语言实现的方法执行的时候分配的内存空间</p>
-<h2 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h2><p>存放常量，静态变量，类信息</p>
+<h2 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h2><p>存放常量，静态变量，类信息<br>和堆一样，也是各个线程共享的内存区域<br>可扩展<br>一样存在垃圾回收机制<br>设置参数:<br>jdk7及以前：<br>-XX:PermSize 设置永久代初始分配空间。默认值是20.75M<br>-XX:MaxPermSize 设定永久代最大可分配空间。32位机器默认是64M，64默认是82M<br>jdk8及以后:<br>-XX:MetaspaceSize 默认21M<br>-XX:MaxMetaspaceSize 默认是-1，表示没有限制<br>存储类型信息、常量、静态变量、即时编译器编译后的代码缓存等  </p>
 <h2 id="程序技术器"><a href="#程序技术器" class="headerlink" title="程序技术器"></a>程序技术器</h2><p>用于在线程被挂起后继续执行的时候找到执行位置，由字节码执行引擎修改</p>
 <h1 id="堆内存垃圾回收机制"><a href="#堆内存垃圾回收机制" class="headerlink" title="堆内存垃圾回收机制"></a>堆内存垃圾回收机制</h1><p>堆可分为三块，前两块区域都为年轻代<br>Eden-&gt;s0,s1-&gt;老年代<br>比例为1/3(8/10)：1/3(2/10)：2/3</p>
 <h4 id="minor-gc"><a href="#minor-gc" class="headerlink" title="minor gc"></a>minor gc</h4><p>所有刚创建的对象都在Eden区，当Eden区内存满的时候开始垃圾回收<br>GC Roots指线程栈的本地变量，静态变量，本地方法栈的变量等<br>使用可达性算法寻找没有指向的对象，可达性算法以GC Roots对象为起点，向下搜索引用的对象<br>对象进入老年代：<br>1.当对象经过15次gc后还没有被回收或者年轻代空间已满，就进入老年代<br>2.在移动的这批对象大小超过s0区的50%也有可能直接进入老年代  </p>
 <h4 id="full-gc"><a href="#full-gc" class="headerlink" title="full gc"></a>full gc</h4><p>老年代内存满之后还会进行gc，对堆中所有内存区域gc  </p>
 <h1 id="jvm调优"><a href="#jvm调优" class="headerlink" title="jvm调优"></a>jvm调优</h1><p>一般指减少gc，最主要的目标指减少full gc<br>STW，stop the world 虚拟机在做垃圾回收的时候会停止所有用户线程<br>STW设计的原因是在gc过程中防止程序的运行对对象的操作</p>
+<h1 id="垃圾收集器种类"><a href="#垃圾收集器种类" class="headerlink" title="垃圾收集器种类"></a>垃圾收集器种类</h1><h2 id="g1垃圾收集器"><a href="#g1垃圾收集器" class="headerlink" title="g1垃圾收集器"></a>g1垃圾收集器</h2><h2 id="栈的指令集架构"><a href="#栈的指令集架构" class="headerlink" title="栈的指令集架构"></a>栈的指令集架构</h2><p>Java的所有指令都是根据栈来设计的</p>
+<h2 id="JVM生命周期"><a href="#JVM生命周期" class="headerlink" title="JVM生命周期"></a>JVM生命周期</h2><h3 id="虚拟机的启动"><a href="#虚拟机的启动" class="headerlink" title="虚拟机的启动"></a>虚拟机的启动</h3><p>Java虚拟机的启动是通过引导类加载器创建的一个初始类来完成的，这个类是由虚拟机的具体实现指定的</p>
+<h3 id="虚拟机的执行"><a href="#虚拟机的执行" class="headerlink" title="虚拟机的执行"></a>虚拟机的执行</h3><ul>
+<li>一个运行中的Java虚拟机有着一个清晰的任务：执行Java程序</li>
+<li>程序开始执行时他才运行，程序结束时他就停止</li>
+<li>执行一个所谓的Java程序的时候，真真正正在执行的是一个叫做Java虚拟机的进程<h3 id="虚拟机的退出"><a href="#虚拟机的退出" class="headerlink" title="虚拟机的退出"></a>虚拟机的退出</h3></li>
+<li>程序正常执行结束</li>
+<li>程序在执行过程中遇到了异常或错误而终止</li>
+<li>由于操作系统出现错误而导致Java虚拟机进程终止</li>
+<li>某线程调用Runtime类或System类的exit方法，或Runtime类的halt方法，并且Java安全管理器也允许这次exit或halt操作(一般不用)</li>
+</ul>
+<h1 id="类加载过程"><a href="#类加载过程" class="headerlink" title="类加载过程"></a>类加载过程</h1><ul>
+<li>loading 加载Class文件到内存中</li>
+<li>linking(分为vertification,preparation,resolution)</li>
+<li>initialization（类的初始化）</li>
+</ul>
+<h2 id="类的初始化"><a href="#类的初始化" class="headerlink" title="类的初始化"></a>类的初始化</h2><ul>
+<li>初始化其实就是执行构造器方法<clinit>()的过程</li>
+<li>该方法不需要定义，时javac编译器自动收集类中的所有变量的复制动作和静态代码块中的语句合并而来</li>
+<li>构造器方法中指令按语句在源文件中出现的顺序执行</li>
+<li><clinit>()不同于类的构造器</li>
+<li>若该类具有父类，jvm会保证子类的<clinit>()执行前，父类的<clinit>()已经执行完毕</li>
+<li>虚拟机必须保证一个类的<clinit>()方法在多线程下被同步加锁(保证一个类只被加载一次)</li>
+</ul>
+<h1 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h1><ul>
+<li>自定义类加载器（所有派生于抽象类ClassLoader的类加载器都划分为自定义类加载器）  </li>
+<li>引导类加载器<br>引导类加载器BootStrap Class Loader<br>扩展类加载器Extention Class Loader<br>系统类加载器System Class Loader<br>自定义类加载器User Defined Class Loader  </li>
+</ul>
+<h3 id="早期绑定，晚期绑定（静态绑定、动态绑定-虚方法、非虚方法）"><a href="#早期绑定，晚期绑定（静态绑定、动态绑定-虚方法、非虚方法）" class="headerlink" title="早期绑定，晚期绑定（静态绑定、动态绑定\虚方法、非虚方法）"></a>早期绑定，晚期绑定（静态绑定、动态绑定\虚方法、非虚方法）</h3><p>在编译期不能确定具体行为，就是晚期绑定，能确定就是早期绑定<br>静态方法、私有方法、final方法、实例构造器、父类方法一定是非虚方法，其他的都是虚方法</p>
+<p>p92</p>
 
       
 
